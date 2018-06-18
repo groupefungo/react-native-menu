@@ -1,4 +1,5 @@
 const TimerMixin = require('react-timer-mixin');
+const createReactClass = require('create-react-class');
 
 let nextID = 1;
 
@@ -47,7 +48,7 @@ module.exports = (React, ReactNative, { constants, model, styles }) => {
    * top-level methods. It also allows the <MenuOptions/> element to be placed
    * properly.
    */
-  const MenuContext = React.createClass({
+  const MenuContext = createReactClass({
     displayName: 'MenuContext',
     mixins: [TimerMixin],
 
@@ -161,7 +162,7 @@ module.exports = (React, ReactNative, { constants, model, styles }) => {
 
     render() {
       return (
-        <View ref="Container" onLayout={this.onLayout} style={{ flex: 1 }}>
+        <View ref={inst => {Container = inst }} onLayout={this.onLayout} style={{ flex: 1 }}>
           <View style={this.props.style}>
             { this.props.children }
           </View>
